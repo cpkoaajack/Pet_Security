@@ -11,7 +11,7 @@
 #define Buf2_Max 200 
 
 void GPIO_Config_LED(void);
-void displayMenu(char *,char *,char *,char *, char *);
+void displayMenu(char *,char *,char *, char *,char *, char *);
 void setSafeDist(void);
 void scanPassThrough(void);
 void alert(int alertSpeed);
@@ -77,9 +77,11 @@ int main(void)
 		char triggered[4];
 		char distance[4];
 		char distance2[4];	 
+		char distance3[4];
 
 		dist = HCSR04GetDistanceS1();
 		dist2 = HCSR04GetDistanceS2();
+		dist3 = HCSR04GetDistanceS3();
 		
 		importData();
 		setSafeDist();
@@ -89,10 +91,11 @@ int main(void)
 		
 		sprintf(distance, "%03i", dist);
 		sprintf(distance2, "%03i", dist2);
+		sprintf(distance3, "%03i", dist3);
 		sprintf(warned, "%03i", warnTime);
 		sprintf(triggered, "%03i", trigTime);
 		sprintf(saveDist, "%03i", safeDist_S1);
-		displayMenu(distance,distance2,warned,triggered,saveDist);
+		displayMenu(distance,distance2, distance3,warned,triggered,saveDist);
 		
 	}
 
@@ -125,7 +128,7 @@ void GPIO_Config_LED(void) {
 
 
 
-void displayMenu(char * dist, char * dist2, char * warn, char * trig, char * safeDist) {
+void displayMenu(char * dist, char * dist2, char * dist3 ,char * warn, char * trig, char * safeDist) {
 	LCD_DrawString(15, 5, "Pet Security Monitor");
 	LCD_DrawString(15, 25, "Yip Pak Kin & Ko Chung Pong");
 	LCD_DrawString(15, 45, "Distance of Sensor 1:");
@@ -134,8 +137,11 @@ void displayMenu(char * dist, char * dist2, char * warn, char * trig, char * saf
 	LCD_DrawString(15, 65, "Distance of Sensor 2:");
 	LCD_DrawString(190, 65, dist2);
 	LCD_DrawString(215, 65, "mm    ");
-	LCD_DrawString(15, 95, "Warning Times: ");
-	LCD_DrawString(190, 95, warn);
+	LCD_DrawString(15, 85, "Distance of Sensor 3:");
+	LCD_DrawString(190, 85, dist3);
+	LCD_DrawString(215, 85, "mm    ");
+	//LCD_DrawString(15, 95, "Warning Times: ");
+	//LCD_DrawString(190, 95, warn);
 	LCD_DrawString(15, 115, "Danger TImes: ");
 	LCD_DrawString(190, 115, trig);
 	

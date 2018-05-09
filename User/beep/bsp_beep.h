@@ -5,7 +5,7 @@
 
 #define macBEEP_GPIO_PORT    	GPIOC			              
 #define macBEEP_GPIO_CLK 	    RCC_APB2Periph_GPIOC		
-#define macBEEP_GPIO_PIN		  GPIO_Pin_8			        
+#define macBEEP_GPIO_PIN		  GPIO_Pin_9			        
 
 #define ON  1
 #define OFF 0
