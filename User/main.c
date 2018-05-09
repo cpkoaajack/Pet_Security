@@ -11,7 +11,7 @@
 #define Buf2_Max 200 
 
 void GPIO_Config_LED(void);
-void displayMenu(void);
+void displayMenu(char *,char *,char *,char *, char *);
 void setSafeDist(void);
 void scanPassThrough(void);
 void alert(int alertSpeed);
@@ -72,6 +72,11 @@ int main(void)
 	Timer2_Init_Config();
 	
 	while(1) {  
+		char saveDist[4];
+		char warned[4];
+		char triggered[4];
+		char distance[4];
+		char distance2[4];	 
 
 		dist = HCSR04GetDistanceS1();
 		dist2 = HCSR04GetDistanceS2();
@@ -81,7 +86,13 @@ int main(void)
 		scanPassThrough();
 	
 		exportData();
-		displayMenu();
+		
+		sprintf(distance, "%03i", dist);
+		sprintf(distance2, "%03i", dist2);
+		sprintf(warned, "%03i", warnTime);
+		sprintf(triggered, "%03i", trigTime);
+		sprintf(saveDist, "%03i", safeDist_S1);
+		displayMenu(distance,distance2,warned,triggered,saveDist);
 		
 	}
 
@@ -114,44 +125,28 @@ void GPIO_Config_LED(void) {
 
 
 
-void displayMenu() {	
-	char distance[4];
-	char distance2[4];	  
-	char warn_num[4];
-	char trigger_num[4];
-	char safeDistChar[4];
-	
-	sprintf(distance, "%03i", dist);
-	sprintf(distance2, "%03i", dist2);
-	sprintf(warn_num, "%03i", warnTime);
-	sprintf(trigger_num, "%03i", trigTime);
-	sprintf(safeDistChar, "%03i", safeDist_S1);
-	
+void displayMenu(char * dist, char * dist2, char * warn, char * trig, char * safeDist) {
 	LCD_DrawString(15, 5, "Pet Security Monitor");
 	LCD_DrawString(15, 25, "Yip Pak Kin & Ko Chung Pong");
 	LCD_DrawString(15, 45, "Distance of Sensor 1:");
-	LCD_DrawString(190, 45, distance);
+	LCD_DrawString(190, 45, dist);
 	LCD_DrawString(215, 45, "mm    ");
 	LCD_DrawString(15, 65, "Distance of Sensor 2:");
-	LCD_DrawString(190, 65, distance2);
+	LCD_DrawString(190, 65, dist2);
 	LCD_DrawString(215, 65, "mm    ");
 	LCD_DrawString(15, 95, "Warning Times: ");
-	LCD_DrawString(190, 95, warn_num);
+	LCD_DrawString(190, 95, warn);
 	LCD_DrawString(15, 115, "Danger TImes: ");
-	LCD_DrawString(190, 115, trigger_num);
+	LCD_DrawString(190, 115, trig);
 	
 	LCD_DrawString(0, 130, "******************************");
 	LCD_DrawString(100, 145, "Menu");
 	LCD_DrawString(15, 160, "1) Call Out Test");
 	LCD_DrawString(15, 175, "2) Export data");
 	LCD_DrawString(15, 230, "Saved Safe Distance :");
-	LCD_DrawString(190, 230, safeDistChar);
+	LCD_DrawString(190, 230, safeDist);
 	LCD_DrawString(215, 230, "mm    ");
-	
 }
-
-
-
 
 
 
@@ -178,14 +173,16 @@ void scanPassThrough(){
 		
 		
 		if(dist < safeDist_S1) {
-				pass1++;
+				//pass1++;
+			alert(100000);
 		} else if (dist2 < safeDist_S2){
-				pass2++;
+				//pass2++;
+			alert(50000);
 		} else if (dist3 < safeDist_S3) {
-				pass3++;
+				//pass3++;
 		}
 		
-		
+		/*
 		if(pass1 > 0 && pass2 == 0 && pass3 == 0) {
 			alert(100000);
 		}	else if(pass1 != 0 && pass1 % 2 == 0 && pass2 == 0) {
@@ -200,7 +197,7 @@ void scanPassThrough(){
 			alert(5000);
 		} else if(pass3 != 0 && pass3 % 2 == 0 && pass2 != 0) {
 			pass3 = 0;
-		}
+		}*/
 }
 
 

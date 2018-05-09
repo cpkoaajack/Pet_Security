@@ -121,9 +121,7 @@ Section Cross References
     main.o(i.alert) refers to stm32f10x_gpio.o(i.GPIO_SetBits) for GPIO_SetBits
     main.o(i.alert) refers to main.o(i.Delayus) for Delayus
     main.o(i.alert) refers to stm32f10x_gpio.o(i.GPIO_ResetBits) for GPIO_ResetBits
-    main.o(i.displayMenu) refers to printf6.o(i.__0sprintf$6) for __2sprintf
     main.o(i.displayMenu) refers to lcd.o(i.LCD_DrawString) for LCD_DrawString
-    main.o(i.displayMenu) refers to main.o(.data) for dist
     main.o(i.exportData) refers to stm32f10x_gpio.o(i.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
     main.o(i.exportData) refers to stm32f10x_gpio.o(i.GPIO_ResetBits) for GPIO_ResetBits
     main.o(i.exportData) refers to main.o(.data) for boolImport
@@ -141,6 +139,7 @@ Section Cross References
     main.o(i.main) refers to main.o(i.setSafeDist) for setSafeDist
     main.o(i.main) refers to main.o(i.scanPassThrough) for scanPassThrough
     main.o(i.main) refers to main.o(i.exportData) for exportData
+    main.o(i.main) refers to printf6.o(i.__0sprintf$6) for __2sprintf
     main.o(i.main) refers to main.o(i.displayMenu) for displayMenu
     main.o(i.main) refers to main.o(.data) for dist
     main.o(i.scanPassThrough) refers to main.o(i.alert) for alert
@@ -1187,18 +1186,18 @@ Image Symbol Table
     _sputc                                   0x08001ab7   Thumb Code    10  printf6.o(i._sputc)
     i.alert                                  0x08001ac0   Section        0  main.o(i.alert)
     i.displayMenu                            0x08001aec   Section        0  main.o(i.displayMenu)
-    i.exportData                             0x08001cfc   Section        0  main.o(i.exportData)
-    i.importData                             0x08001d2c   Section        0  main.o(i.importData)
-    i.initMeasureTimer_SENSOR1               0x08001d60   Section        0  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR1)
-    initMeasureTimer_SENSOR1                 0x08001d61   Thumb Code   146  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR1)
-    i.initMeasureTimer_SENSOR2               0x08001e10   Section        0  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR2)
-    initMeasureTimer_SENSOR2                 0x08001e11   Thumb Code   146  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR2)
-    i.initPins                               0x08001ec0   Section        0  stm32f10x_hc-sr04.o(i.initPins)
-    i.main                                   0x08001f38   Section        0  main.o(i.main)
-    i.scanPassThrough                        0x08001f80   Section        0  main.o(i.scanPassThrough)
-    i.setSafeDist                            0x080020ec   Section        0  main.o(i.setSafeDist)
-    .constdata                               0x08002158   Section     1520  lcd.o(.constdata)
-    .conststring                             0x08002748   Section       63  main.o(.conststring)
+    i.exportData                             0x08001cb0   Section        0  main.o(i.exportData)
+    i.importData                             0x08001ce0   Section        0  main.o(i.importData)
+    i.initMeasureTimer_SENSOR1               0x08001d14   Section        0  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR1)
+    initMeasureTimer_SENSOR1                 0x08001d15   Thumb Code   146  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR1)
+    i.initMeasureTimer_SENSOR2               0x08001dc4   Section        0  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR2)
+    initMeasureTimer_SENSOR2                 0x08001dc5   Thumb Code   146  stm32f10x_hc-sr04.o(i.initMeasureTimer_SENSOR2)
+    i.initPins                               0x08001e74   Section        0  stm32f10x_hc-sr04.o(i.initPins)
+    i.main                                   0x08001eec   Section        0  main.o(i.main)
+    i.scanPassThrough                        0x08001f94   Section        0  main.o(i.scanPassThrough)
+    i.setSafeDist                            0x08002008   Section        0  main.o(i.setSafeDist)
+    .constdata                               0x08002074   Section     1520  lcd.o(.constdata)
+    .conststring                             0x08002664   Section       63  main.o(.conststring)
     .data                                    0x20000000   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000000   Data          16  stm32f10x_rcc.o(.data)
     ADCPrescTable                            0x20000010   Data           4  stm32f10x_rcc.o(.data)
@@ -1414,16 +1413,16 @@ Image Symbol Table
     __scatterload_null                       0x08001763   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x08001765   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     alert                                    0x08001ac1   Thumb Code    38  main.o(i.alert)
-    displayMenu                              0x08001aed   Thumb Code   258  main.o(i.displayMenu)
-    exportData                               0x08001cfd   Thumb Code    34  main.o(i.exportData)
-    importData                               0x08001d2d   Thumb Code    38  main.o(i.importData)
-    initPins                                 0x08001ec1   Thumb Code   110  stm32f10x_hc-sr04.o(i.initPins)
-    main                                     0x08001f39   Thumb Code    64  main.o(i.main)
-    scanPassThrough                          0x08001f81   Thumb Code   322  main.o(i.scanPassThrough)
-    setSafeDist                              0x080020ed   Thumb Code    88  main.o(i.setSafeDist)
-    ucAscii_1608                             0x08002158   Data        1520  lcd.o(.constdata)
-    Region$$Table$$Base                      0x08002788   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080027a8   Number         0  anon$$obj.o(Region$$Table)
+    displayMenu                              0x08001aed   Thumb Code   210  main.o(i.displayMenu)
+    exportData                               0x08001cb1   Thumb Code    34  main.o(i.exportData)
+    importData                               0x08001ce1   Thumb Code    38  main.o(i.importData)
+    initPins                                 0x08001e75   Thumb Code   110  stm32f10x_hc-sr04.o(i.initPins)
+    main                                     0x08001eed   Thumb Code   140  main.o(i.main)
+    scanPassThrough                          0x08001f95   Thumb Code    90  main.o(i.scanPassThrough)
+    setSafeDist                              0x08002009   Thumb Code    88  main.o(i.setSafeDist)
+    ucAscii_1608                             0x08002074   Data        1520  lcd.o(.constdata)
+    Region$$Table$$Base                      0x080026a4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080026c4   Number         0  anon$$obj.o(Region$$Table)
     GPIO_InitStructure                       0x20000014   Data           4  main.o(.data)
     phone                                    0x20000018   Data           4  main.o(.data)
     First_Int                                0x20000028   Data           1  main.o(.data)
@@ -1467,9 +1466,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00002810, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000272c, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000027a8, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x000026c4, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1584,19 +1583,19 @@ Memory Map of the image
     0x08001a88   0x0000002e   Code   RO         3725    i._printf_pre_padding  mc_w.l(printf6.o)
     0x08001ab6   0x0000000a   Code   RO         3727    i._sputc            mc_w.l(printf6.o)
     0x08001ac0   0x0000002c   Code   RO         3181    i.alert             main.o
-    0x08001aec   0x00000210   Code   RO         3182    i.displayMenu       main.o
-    0x08001cfc   0x00000030   Code   RO         3183    i.exportData        main.o
-    0x08001d2c   0x00000034   Code   RO         3184    i.importData        main.o
-    0x08001d60   0x000000b0   Code   RO         3439    i.initMeasureTimer_SENSOR1  stm32f10x_hc-sr04.o
-    0x08001e10   0x000000b0   Code   RO         3440    i.initMeasureTimer_SENSOR2  stm32f10x_hc-sr04.o
-    0x08001ec0   0x00000078   Code   RO         3441    i.initPins          stm32f10x_hc-sr04.o
-    0x08001f38   0x00000048   Code   RO         3185    i.main              main.o
-    0x08001f80   0x0000016c   Code   RO         3186    i.scanPassThrough   main.o
-    0x080020ec   0x0000006c   Code   RO         3187    i.setSafeDist       main.o
-    0x08002158   0x000005f0   Data   RO         3323    .constdata          lcd.o
-    0x08002748   0x0000003f   Data   RO         3190    .conststring        main.o
-    0x08002787   0x00000001   PAD
-    0x08002788   0x00000020   Data   RO         3866    Region$$Table       anon$$obj.o
+    0x08001aec   0x000001c4   Code   RO         3182    i.displayMenu       main.o
+    0x08001cb0   0x00000030   Code   RO         3183    i.exportData        main.o
+    0x08001ce0   0x00000034   Code   RO         3184    i.importData        main.o
+    0x08001d14   0x000000b0   Code   RO         3439    i.initMeasureTimer_SENSOR1  stm32f10x_hc-sr04.o
+    0x08001dc4   0x000000b0   Code   RO         3440    i.initMeasureTimer_SENSOR2  stm32f10x_hc-sr04.o
+    0x08001e74   0x00000078   Code   RO         3441    i.initPins          stm32f10x_hc-sr04.o
+    0x08001eec   0x000000a8   Code   RO         3185    i.main              main.o
+    0x08001f94   0x00000074   Code   RO         3186    i.scanPassThrough   main.o
+    0x08002008   0x0000006c   Code   RO         3187    i.setSafeDist       main.o
+    0x08002074   0x000005f0   Data   RO         3323    .constdata          lcd.o
+    0x08002664   0x0000003f   Data   RO         3190    .conststring        main.o
+    0x080026a3   0x00000001   PAD
+    0x080026a4   0x00000020   Data   RO         3866    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000005a0, Max: 0x00010000, ABSOLUTE)
@@ -1622,7 +1621,7 @@ Image component sizes
         56          6          0          0          0        495   bsp_beep.o
          0          0          0          0          0       4508   core_cm3.o
       1378         36       1520          0          0       8760   lcd.o
-      1348        392         63         78        200       7180   main.o
+      1120        368         63         78        200       7252   main.o
        112         12          0          0          0       1000   misc.o
         36          8        304          0       1024        852   startup_stm32f10x_hd.o
        282          6          0          0          0       1777   stm32f10x_fsmc.o
@@ -1637,7 +1636,7 @@ Image component sizes
        182         10          0          0          0       1149   usart.o
 
     ----------------------------------------------------------------------
-      7216        812       1920        104       1336     320140   Object Totals
+      6988        788       1920        104       1336     320212   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          1          2          0          0   (incl. Padding)
 
@@ -1678,15 +1677,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      8232        838       1920        104       1336     316440   Grand Totals
-      8232        838       1920        104       1336     316440   ELF Image Totals
-      8232        838       1920        104          0          0   ROM Totals
+      8004        814       1920        104       1336     316512   Grand Totals
+      8004        814       1920        104       1336     316512   ELF Image Totals
+      8004        814       1920        104          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10152 (   9.91kB)
+    Total RO  Size (Code + RO Data)                 9924 (   9.69kB)
     Total RW  Size (RW Data + ZI Data)              1440 (   1.41kB)
-    Total ROM Size (Code + RO Data + RW Data)      10256 (  10.02kB)
+    Total ROM Size (Code + RO Data + RW Data)      10028 (   9.79kB)
 
 ==============================================================================
 
