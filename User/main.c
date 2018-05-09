@@ -56,9 +56,15 @@ int32_t safeDist_S3 = -1;
 int32_t warnTime = 0x0000;
 int32_t trigTime = 0x0000;
 
-int32_t pass1 = 0;
-int32_t pass2 = 0;
-int32_t pass3 = 0;
+
+int32_t S1Pass= 0;
+int32_t S1Inside = 0;
+
+int32_t S2Pass= 0;
+int32_t S2Inside = 0;
+
+int32_t S3Pass= 0;
+int32_t S3Inside = 0;
 
 int32_t boolImport = 0; //indicate whether import function is called
 
@@ -70,6 +76,7 @@ int main(void)
 	BEEP_GPIO_Config();
 	USART2_Init_Config(115200);
 	Timer2_Init_Config();
+	macBEEP( OFF );
 	
 	while(1) {  
 		char saveDist[4];
@@ -156,14 +163,9 @@ void displayMenu(char * dist, char * dist2, char * dist3 ,char * warn, char * tr
 
 
 
-
-
-
-
-
-
-
 void scanPassThrough(){
+		
+	
 		
 		if(dist < 0) {
 			dist = 0;
@@ -177,33 +179,51 @@ void scanPassThrough(){
 			dist3 = 0;
 		}
 		
+
 		
-		if(dist < safeDist_S1) {
-				//pass1++;
-			alert(100000);
-		} else if (dist2 < safeDist_S2){
-				//pass2++;
-			alert(50000);
-		} else if (dist3 < safeDist_S3) {
-				//pass3++;
+		if(dist < safeDist_S1 && S1Pass == 0 && S1Inside == 0) {
+				S1Pass = 1;
+		}	else if(S1Pass != 0 && dist > safeDist_S1) {
+				S1Inside = 1;
+		}	else if(S1Inside == 1 && S1Pass == 1 && dist < safeDist_S1) {
+				Delayus(1000000);
+				S1Inside = 0;
+				S1Pass = 0;
 		}
 		
-		/*
-		if(pass1 > 0 && pass2 == 0 && pass3 == 0) {
-			alert(100000);
-		}	else if(pass1 != 0 && pass1 % 2 == 0 && pass2 == 0) {
-			pass1 = 0;
-		} else if(pass1 > 0 && pass2 > 0 && pass3 == 0 ){
-			alert(10000);
-		} else if(pass2 != 0 && pass2 % 2 == 0 && pass1 != 0) {
-			alert(100000);
-			pass2 = 0;
-		} else if(pass1 > 0 && pass2 > 0 && pass3 > 0) {
-			//call
-			alert(5000);
-		} else if(pass3 != 0 && pass3 % 2 == 0 && pass2 != 0) {
-			pass3 = 0;
-		}*/
+		if(S1Inside == 1 && dist2 < safeDist_S2 && S2Pass == 0 && S2Inside == 0) {
+				S2Pass = 1;
+		}else if(S1Inside == 1 && S2Pass != 0 && dist2 > safeDist_S2) {
+				S2Inside = 1;
+		}else if(S1Inside == 1 && S2Inside == 1 && S2Pass == 1 && dist2 < safeDist_S2) {
+				Delayus(1000000);
+				S2Inside = 0;
+				S2Pass = 0;
+		}
+		
+		
+		if(S1Inside == 1 && S2Inside == 1 && dist3 < safeDist_S3 && S3Pass == 0 && S3Inside == 0) {
+				S3Pass = 1;
+		}else if(S1Inside == 1 && S2Inside == 1 && S3Pass != 0 && dist3 > safeDist_S3) {
+				S3Inside = 1;
+		}else if(S1Inside == 1 && S2Inside == 1 && S3Inside == 1 && S3Pass == 1 && dist3 < safeDist_S3) {
+				Delayus(1000000);
+				S3Inside = 0;
+				S3Pass = 0;
+		}
+		
+			
+			
+		
+		if(S1Inside == 1 && S2Inside == 0 && S3Inside == 0) {
+				alert(100000);
+		} else if(S1Inside == 1 && S2Inside == 1 && S3Inside == 0) {
+				alert(50000);
+		} else if (S1Inside == 1 && S2Inside == 1 && S3Inside == 1) {
+				alert(10000);
+				UART2_SendString(phone);
+		}
+		
 }
 
 
@@ -226,8 +246,6 @@ void setSafeDist() {
 			}
 		}
 }
-
-
 
 
 
